@@ -50,19 +50,28 @@ public class Habilidad {
 
  // Método para aplicar el efecto de la habilidad
  public void aplicarEfecto(Jugador atacante, Jugador objetivo) {
+		final String RESET = "\u001B[0m";
+		final String BLACK = "\u001B[30m";
+		final String RED = "\u001B[31m";
+		final String GREEN = "\u001B[32m";
+		final String YELLOW = "\u001B[33m";
+		final String BLUE = "\u001B[34m";
+		final String PURPLE = "\u001B[35m";
+		final String CYAN = "\u001B[36m";
+		final String WHITE = "\u001B[37m";
      Random random = new Random();
      double probabilidad = random.nextDouble(); // Generar un número aleatorio entre 0 y 1
      if (probabilidad <= probabilidadCritico) { // Si el número está dentro de la probabilidad de crítico
          // Golpe crítico: incrementar el poder del ataque
          objetivo.setVida(objetivo.getVida() - this.poder * 2); // Doble de daño
-         System.out.println("¡Golpe crítico!");
+         System.out.println(RED+"¡Golpe crítico!"+RESET);
      } else {
          // Ataque normal
          objetivo.setVida(objetivo.getVida() - this.poder);
      }
      objetivo.setDefensa(objetivo.getDefensa() + this.penalizacionDefensa);
      if (objetivo.getVida() <= 0) {
-         System.out.println(objetivo.getNombre() + " ha sido derrotado.");
+         System.out.println(objetivo.getNombre() + " "+BLUE+" ha sido derrotado."+RESET);
      }
  }
 }

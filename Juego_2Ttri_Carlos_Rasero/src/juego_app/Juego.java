@@ -6,6 +6,17 @@ import java.util.Scanner;
 
 public class Juego {
 
+	// Colores ANSI
+	public static final String RESET = "\u001B[0m";
+	public static final String BLACK = "\u001B[30m";
+	public static final String RED = "\u001B[31m";
+	public static final String GREEN = "\u001B[32m";
+	public static final String YELLOW = "\u001B[33m";
+	public static final String BLUE = "\u001B[34m";
+	public static final String PURPLE = "\u001B[35m";
+	public static final String CYAN = "\u001B[36m";
+	public static final String WHITE = "\u001B[37m";
+
 	public static void main(String[] args) {
 
 		// Array de tamaño 10
@@ -58,121 +69,249 @@ public class Juego {
 		padresDisponibles[5] = crearPadreAleatorio("Madre default");
 
 		do {
-			System.out.println("--------------------------------------------------------------");
-			System.out.println("------------------------------MENU----------------------------");
+			System.out.println(BLUE + "--------------------------------------------------------------" + RESET);
+			System.out.println(CYAN + "------------------------------MENU----------------------------");
 			System.out.println("1. Jugar");
 			System.out.println("2. Ver Personajes disponibles");
 			System.out.println("3. Modificar Personaje");
 			System.out.println("4. Eliminar Personaje");
 			System.out.println("5. Crear Personaje");
-			System.out.println("6. Salir del juego");
-			System.out.println("--------------------------------------------------------------");
+			System.out.println("6. Salir del juego" + RESET);
+			System.out.println(BLUE + "--------------------------------------------------------------" + RESET);
 
 			opPrincipal = sc.nextInt();
 
 			switch (opPrincipal) {
 			case 1:
 				do {
-					System.out.println("--------------------------------------------------------------");
-					System.out.println("------------------------------MENU----------------------------");
+					System.out.println(BLUE + "--------------------------------------------------------------" + RESET);
+					System.out.println(CYAN + "------------------------------MENU----------------------------");
 					System.out.println("Por favor, escoja una dificultad");
 					System.out.println("1. NIVEL DE DIFICULTAD: Fácil");
 					System.out.println("2. NIVEL DE DIFICULTAD: Medio");
 					System.out.println("3. NIVEL DE DIFICULTAD: Difícil");
 					System.out.println("4. NIVEL DE DIFICULTAD: Jugador de Pokemon");
-					System.out.println("5. Volver al menú principal");
-					System.out.println("--------------------------------------------------------------");
+					System.out.println("5. Volver al menú principal" + RESET);
+					System.out.println(BLUE + "--------------------------------------------------------------" + RESET);
 					opSubMenu = sc.nextInt();
 
 					switch (opSubMenu) {
 					case 1:
-					    System.out.println("Esto es un combate aleatorio entre un alumno y un profesor");
-					    System.out.println("¡Comienza el combate!");
-					    System.out.println("");
+						System.out.println(CYAN + "Esto es un combate aleatorio entre un alumno y un profesor");
+						System.out.println("¡Comienza el combate!");
+						System.out.println("");
+						System.out.println("Se enfrentarán el alumno: " + RESET);
+						System.out.println("───────▄▀▀▀▀▀▀▀▀▀▀▄▄\r\n" + "────▄▀▀░░░░░░░░░░░░░▀▄\r\n"
+								+ "──▄▀░░░░░░░░░░░░░░░░░░▀▄\r\n" + "──█░░░░░░░░░░░░░░░░░░░░░▀▄\r\n"
+								+ "─▐▌░░░░░░░░▄▄▄▄▄▄▄░░░░░░░▐▌\r\n" + "─█░░░░░░░░░░░▄▄▄▄░░▀▀▀▀▀░░█\r\n"
+								+ "▐▌░░░░░░░▀▀▀▀░░░░░▀▀▀▀▀░░░▐▌\r\n" + "█░░░░░░░░░▄▄▀▀▀▀▀░░░░▀▀▀▀▄░█\r\n"
+								+ "█░░░░░░░░░░░░░░░░▀░░░▐░░░░░▐▌\r\n" + "▐▌░░░░░░░░░▐▀▀██▄░░░░░░▄▄▄░▐▌\r\n"
+								+ "─█░░░░░░░░░░░▀▀▀░░░░░░▀▀██░░█\r\n" + "─▐▌░░░░▄░░░░░░░░░░░░░▌░░░░░░█\r\n"
+								+ "──▐▌░░▐░░░░░░░░░░░░░░▀▄░░░░░█\r\n" + "───█░░░▌░░░░░░░░▐▀░░░░▄▀░░░▐▌\r\n"
+								+ "───▐▌░░▀▄░░░░░░░░▀░▀░▀▀░░░▄▀\r\n" + "───▐▌░░▐▀▄░░░░░░░░░░░░░░░░█\r\n"
+								+ "───▐▌░░░▌░▀▄░░░░▀▀▀▀▀▀░░░█\r\n" + "───█░░░▀░░░░▀▄░░░░░░░░░░▄▀\r\n"
+								+ "──▐▌░░░░░░░░░░▀▄░░░░░░▄▀\r\n" + "─▄▀░░░▄▀░░░░░░░░▀▀▀▀█▀\r\n"
+								+ "▀░░░▄▀░░░░░░░░░░▀░░░▀▀▀▀▄▄▄▄▄\r\n" + "");
+						System.out.println();
+						System.out.println();
+						System.out.println(CYAN + "Contra el profesor: " + RESET);
+						System.out.println("──────────────────────────────────\r\n"
+								+ "─────────▄██████████████████▄─────\r\n" + "────────██▀░░░░░░░░░░░░░░░░▀██▄───\r\n"
+								+ "───────█▌░░▄░░░░░░░▀▄▄▀░░░░░░▀█───\r\n" + "──────█▌░░░▀███▄░░▀▄▄▄▄▀░░░░░░▀█──\r\n"
+								+ "─────█▌░░░░█▀──▀▄░░░░░░░░░▄▄█▀░▐█─\r\n" + "────█▌░░░░░█─────█░▄▄▄░░▄▀▀▀▀▄░░▐█\r\n"
+								+ "───█▌░░░░░░█──█──█░░░░░█─────█░░░█\r\n" + "──█▌░░░░░░░░▀▄▄▄▀░░░░░░█──█──█░░░█\r\n"
+								+ "─█▌░░░░░░░░░░░░░░▄░░▄░░░▀▄▄▄▀░░░░█\r\n" + "█▌░░░░▄▀▀▄░░░░░▀▀░░░░▀▀░░░░░░░░░░█\r\n"
+								+ "█░░░░░▀▄░░░░░░░▄▀░▀▄░░░░░▄▀▀▄░░░░█\r\n" + "█░▐░░░░░▀▀▀▀▀▀▀░░░░░▀▀▄▄▄▄▄▄▀░░▌░█\r\n"
+								+ "█░░▌▄░░░░░░▄█▀▀█▀▀█▀▄░░░░░░░▄░▐░░█\r\n" + "█░░▌█▀█▀▀█▀─█──█──█──█▀▀█▀▀██░▐░░█\r\n"
+								+ "█░▐░█▄█▄▄█▄▄█▄▄█▄▄█▄▄█▄▄█▄██░░▐░░█\r\n" + "█░░░███████████████████████░░░░▌░█\r\n"
+								+ "█░░░█▄─█──█──█──█──█──█──█▀░░░░░░█\r\n" + "█░░░░▀██▄▄█▄▄█▄▄█▄▄█▄▄█▄█▀░░░░░░▐█\r\n"
+								+ "█▌░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▄█▀\r\n" + "─█▄░░░░░░░░░░░░░░░░░░░░░░░░░░░▄█──\r\n"
+								+ "──█▄░░░░░░░▀▄▄▄▄▄▄▄▀░░░░░░░░░▄█───\r\n" + "───██▄░░░░░░░░░░░░░░░░░░░░░▄██────\r\n"
+								+ "────▀██▄░░░░░░░░░░░░░░░░░▄██▀─────\r\n" + "──────▀███████████████████▀───────\r\n"
+								+ "");
 
-					    boolean seleccionValida = false;
-					    while (!seleccionValida) {
-					        try {
-					            // Escoge un profesor al azar
-					            Random rand = new Random();
-					            Profesor profesorAleatorio = (Profesor) profesoresDisponibles[rand.nextInt(profesoresDisponibles.length)];
-					            // Escoge un alumno al azar
-					            Alumno alumnoAleatorio = (Alumno) alumnosDisponibles[rand.nextInt(alumnosDisponibles.length)];
-					            
-					            // Verifica si los elementos seleccionados son nulos
-					            if (profesorAleatorio != null && alumnoAleatorio != null) {
-					                // Inicia el combate
-					                jugarCombate(profesorAleatorio, alumnoAleatorio);
-					                seleccionValida = true;
-					            } else {
-					                throw new NullPointerException("Se ha seleccionado un profesor o un alumno nulo.");
-					            }
-					        } catch (NullPointerException e) {
-					            System.out.println("Se ha producido un error: " + e.getMessage());
-					            System.out.println("¿Quieres intentarlo de nuevo? (s/n)");
-					            String respuesta = sc.next();
-					            if (!respuesta.equalsIgnoreCase("s")) {
-					                seleccionValida = true;
-					            }
-					        }
-					    }
-					    break;
+						boolean seleccionValida = false;
+						while (!seleccionValida) {
+							try {
+								// Escoge un profesor al azar
+								Random rand = new Random();
+								Profesor profesorAleatorio = (Profesor) profesoresDisponibles[rand
+										.nextInt(profesoresDisponibles.length)];
+								// Escoge un alumno al azar
+								Alumno alumnoAleatorio = (Alumno) alumnosDisponibles[rand
+										.nextInt(alumnosDisponibles.length)];
+
+								// Verifica si los elementos seleccionados son nulos
+								if (profesorAleatorio != null && alumnoAleatorio != null) {
+									// Inicia el combate
+									jugarCombate(profesorAleatorio, alumnoAleatorio);
+									seleccionValida = true;
+								} else {
+									throw new NullPointerException(
+											RED + "Se ha seleccionado un profesor o un alumno nulo." + RESET);
+								}
+							} catch (NullPointerException e) {
+								System.out.println(RED + "Se ha producido un error: " + e.getMessage());
+								System.out.println(RED+"¿Quieres intentarlo de nuevo?"+RESET+" (s/n)" + RESET);
+								String respuesta = sc.next();
+								if (!respuesta.equalsIgnoreCase("s")) {
+									seleccionValida = true;
+								}
+							}
+						}
+						break;
 
 					case 2:
-						System.out.println(
-								"Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
-										+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
-										+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
+						System.out.println(CYAN
+								+ "Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
+								+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
+								+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
 						System.out.println("");
 						System.out.println("Esto es un combate aleatorio entre un padre y un alumno");
 
 						System.out.println("¡Comienza el combate!");
+						System.out.println("Se enfrentará el padre: " + RESET);
+						System.out.println("░░░░░░░░███████████████░░░░░░░░\r\n" + "░░░░░█████████████████████░░░░░\r\n"
+								+ "░░░░████████████████████████░░░\r\n" + "░░░██████████████████████████░░\r\n"
+								+ "░░█████████████████████████████\r\n" + "░░███████████▀░░░░░░░░░████████\r\n"
+								+ "░░███████████░░░░░░░░░░░░░░░███\r\n" + "░████████████░░░░░░░░░░░░░░░░██\r\n"
+								+ "░█░░███████░░░░░░░░░░░▄▄░░░░░██\r\n" + "█░░░░█████░░░░░░▄███████░░██░░█\r\n"
+								+ "█░░█░░░███░░░░░██▀▀░░░░░░░░██░█\r\n" + "█░░░█░░░░░░░░░░░░▄██▄░░░░░░░███\r\n"
+								+ "█░░▄█░░░░░░░░░░░░░░░░░░█▀▀█▄░██\r\n" + "█░░░░░░░░░░░░░░░░░░░░░░█░░░░██░\r\n"
+								+ "░███░░░░░░░░░░░░░░░░░░░█░░░░█░░\r\n" + "░░█░█░░░░░░░█░░░░░██▀▄░▄██░░░█░\r\n"
+								+ "░░█░█░░░░░░█░░░░░░░░░░░░░░░░░█░\r\n" + "░░░██░░░░░░█░░░░▄▄▄▄▄▄░░░░░░█░░\r\n"
+								+ "░░░██░░░░░░░█░░█▄▄▄▄░▀▀██░░█░░░\r\n" + "░░░██░░░░░░░█░░▀████████░░█░░░░\r\n"
+								+ "░░█░░█░░░░░░░█░░▀▄▄▄▄██░░█░░░░░\r\n" + "░░█░░░█░░░░░░░█░░░░░░░░░█░░░░░░\r\n"
+								+ "░█░░░░░█░░░░░░░░░░░░░░░░█░░░░░░\r\n" + "░░░░░░░░█░░░░░░█░░░░░░░░█░░░░░░\r\n"
+								+ "░░░░░░░░░░░░░░░░████████░░░░░░░\r\n" + "");
 						System.out.println("");
-						// Escoge un profesor al azar
-						Random rand2 = new Random();
-						Padre padreAleatorio2 = (Padre) padresDisponibles[rand2.nextInt(padresDisponibles.length)];
-						// Escoge un alumno al azar
-						Alumno alumnoAleatorio2 = (Alumno) alumnosDisponibles[rand2.nextInt(alumnosDisponibles.length)];
-						// Inicia el combate
-						jugarCombate(padreAleatorio2, alumnoAleatorio2);
+						System.out.println("");
+						System.out.println(CYAN + "Contra el alumno: " + RESET);
+						System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░█▄\r\n" + "░▄▄▄▄▄▄░░░░░░░░░░░░░▄▄▄▄▄░░█▄\r\n"
+								+ "░▀▀▀▀▀███▄░░░░░░░▄███▀▀▀▀░░░█▄\r\n" + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█\r\n"
+								+ "░▄▀▀▀▀▀▄░░░░░░░░░░▄▀▀▀▀▀▄░░░░█\r\n" + "█▄████▄░▀▄░░░░░░▄█░▄████▄▀▄░░█▄\r\n"
+								+ "████▀▀██░▀▄░░░░▄▀▄██▀█▄▄█░█▄░░█\r\n" + "██▀██████░█░░░░█░████▀█▀██░█░░█\r\n"
+								+ "████▀▄▀█▀░█░░░░█░█████▄██▀▄▀░░█\r\n" + "███████▀░█░░░░░░█░█████▀░▄▀░░░█\r\n"
+								+ "░▀▄▄▄▄▄▀▀░░░░░░░░▀▀▄▄▄▄▀▀░░░░░█\r\n" + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█\r\n"
+								+ "░░▓▓▓▓▓▓▓░░░░░░░░░░▓▓▓▓▓▓▓░░░░█\r\n" + "░░░▓▓▓▓▓░░░░░░░░░░░░▓▓▓▓▓░░░░░█\r\n"
+								+ "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█\r\n" + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█▀\r\n"
+								+ "░░░░░░░░░▄▄███████▄▄░░░░░░░░░█\r\n" + "░░░░░░░░█████████████░░░░░░░█▀\r\n"
+								+ "░░░░░░░░░▀█████████▀░░░░░░░█▀\r\n" + "░░░░░░░░░░░░░░░░░░░░░░░░░░█▀\r\n"
+								+ "░░░░░░░░░░░░░░░░░░░░░░░░░█▀\r\n" + "");
+						boolean seleccionValida2 = false;
+						while (!seleccionValida2) {
+							try {
+								// Escoge un profesor al azar
+								Random rand = new Random();
+								Padre padreAleatorio = (Padre) padresDisponibles[rand
+										.nextInt(padresDisponibles.length)];
+								// Escoge un alumno al azar
+								Alumno alumnoAleatorio = (Alumno) alumnosDisponibles[rand
+										.nextInt(alumnosDisponibles.length)];
+
+								// Verifica si los elementos seleccionados son nulos
+								if (padreAleatorio != null && alumnoAleatorio != null) {
+									// Inicia el combate
+									jugarCombate(padreAleatorio, alumnoAleatorio);
+									seleccionValida2 = true;
+								} else {
+									throw new NullPointerException(
+											RED + "Se ha seleccionado un padre o un alumno nulo." + RESET);
+								}
+							} catch (NullPointerException e) {
+								System.out.println(RED + "Se ha producido un error: " + e.getMessage());
+								System.out.println("¿Quieres intentarlo de nuevo? (s/n)" + RESET);
+								String respuesta2 = sc.next();
+								if (!respuesta2.equalsIgnoreCase("s")) {
+									seleccionValida2 = true;
+								}
+							}
+						}
 						break;
 
 					case 3:
-						System.out.println("Esto es un combate aleatorio entre un profesor y un padre");
+						System.out.println(CYAN + "Esto es un combate aleatorio entre un profesor y un padre");
 						System.out.println("¡Comienza el combate!");
 						System.out.println("");
+						System.out.println("Se enfentrará el padre: " + RESET);
+						System.out.println("░░░░░▄▄▄▀▀▀▀▀▀▀▀▀▄▄▄░░░░░░░░░\r\n" + "░░░▄▀░░░░░░░░░░░░░░░▀▀▄▄░░░░░\r\n"
+								+ "░░▄▀░░░░░░░░░░░░░░░░░░░░▀▄░░░\r\n" + "░▄▀░░░░░░░░░░░░░░░░░░░░░░░█░░\r\n"
+								+ "░█░░░░░░░░░░░░░░░░░░░░░░░░░█░\r\n" + "▐░░░░░░░░░░░░░░░░░░░░░░░░░░░█\r\n"
+								+ "█░░░░▀▀█▄▄▄░░░▄▌░░░░░░░░░░░░▐\r\n" + "▌░░░░░▌░██▀█▀▀░░░▄▄▄▄▄░░░░▌░▐\r\n"
+								+ "▌░░░░░▀▄▄▄▀░░░░░░▌░▀███▄▄▀░░▐\r\n" + "▌░░░░░░░░░░░░░░░░░▀▄▄▄▄▀░░░▄▌\r\n"
+								+ "▐░░░░▐▀░░░░░░░░░░░░░░░░░░░▄▀░\r\n" + "░█░░░▌░░▄▀▀▀▄▄▄░░░░░░░░░░▄▀░░\r\n"
+								+ "░░█░░▀░░░░▄▄▄▄░▀▀▌░░▌░░░█░░░░\r\n" + "░░░▀▄░░░░░░░░░▀░░░▄▀░░▄▀░░░░░\r\n"
+								+ "░░░░░▀▄▄▄░░░░░░░░░▄▄▀▀░░░░░░░\r\n" + "░░░░░░░░▐▀▀▀▀▀▀▀▀▀░░░░░░░░░░░\r\n" + "");
+						System.out.println("");
+						System.out.println("");
+						System.out.println(CYAN + "Contra el profesor: " + RESET);
+						System.out.println("░░░░░░░░░░░░▄▄▄█▀▀▀▀▀▀▀▀█▄▄▄░░░░░░░░░░░░\r\n"
+								+ "░░░░░░░░▄▄█▀▀░░░░░░░░░░░░░░▀▀█▄▄░░░░░░░░\r\n"
+								+ "░░░░░░▄█▀░░░░▄▄▄▄▄▄▄░░░░░░░░░░░▀█▄░░░░░░\r\n"
+								+ "░░░░▄█▀░░░▄██▄▄▄▄▄▄▄██▄░░░░▄█▀▀▀▀██▄░░░░\r\n"
+								+ "░░░█▀░░░░█▀▀▀░░▄██░░▄▄█░░░██▀▀▀███▄██░░░\r\n"
+								+ "░░█░░░░░░▀█▀▀▀▀▀▀▀▀▀██▀░░░▀█▀▀▀▀███▄▄█░░\r\n"
+								+ "░█░░░░░░░░░▀▀█▄▄██▀▀░░░░░░░░▀▄▄▄░░░▄▄▀█░\r\n"
+								+ "█▀░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▀▀▀▀▀░░▀█\r\n"
+								+ "█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▄░░░░█\r\n"
+								+ "█░░░░░░░░░░░░░░░░░░░░░░░░▄▄▄▄▄██░░▀█░░░█\r\n"
+								+ "█░░░░░░░░░░░░░░█░░░▄▄▄█▀▀▀░░░▄█▀░░░░░░░█\r\n"
+								+ "█░░░░░░░░░░░░░░░░░░▀░░░░░░░░█▀░░░░░░░░░█\r\n"
+								+ "█▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▄█\r\n"
+								+ "░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█░\r\n"
+								+ "░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█░░\r\n"
+								+ "░░░█▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▄█░░░\r\n"
+								+ "░░░░▀█▄░░░░░░░░░░░░░░░░░░░░░░░░░░▄█▀░░░░\r\n"
+								+ "░░░░░░▀█▄░░░░░░░░░░░░░░░░░░░░░░▄█▀░░░░░░\r\n" + "");
 
-						// Escoge un profesor al azar
-						Random rand3 = new Random();
-						try {
-							Padre padreAleatorio3 = (Padre) padresDisponibles[rand3.nextInt(padresDisponibles.length)];
-							// Escoge un alumno al azar
-							Profesor profesorAleatorio3 = (Profesor) profesoresDisponibles[rand3
-									.nextInt(profesoresDisponibles.length)];
-							// Inicia el combate
-							jugarCombate(padreAleatorio3, profesorAleatorio3);
-						} catch (ArrayIndexOutOfBoundsException e) {
-							System.out.println("Error: " + e.getMessage());
+						boolean seleccionValida3 = false;
+						while (!seleccionValida3) {
+							try {
+								// Escoge un profesor al azar
+								Random rand = new Random();
+								Profesor profesorAleatorio3 = (Profesor) profesoresDisponibles[rand
+										.nextInt(profesoresDisponibles.length)];
+								// Escoge un alumno al azar
+								Padre padreAleatorio3 = (Padre) padresDisponibles[rand
+										.nextInt(padresDisponibles.length)];
+
+								// Verifica si los elementos seleccionados son nulos
+								if (profesorAleatorio3 != null && padreAleatorio3 != null) {
+									// Inicia el combate
+									jugarCombate(profesorAleatorio3, padreAleatorio3);
+									seleccionValida3 = true;
+								} else {
+									throw new NullPointerException(
+											RED + "Se ha seleccionado un profesor o un padre nulo." + RESET);
+								}
+							} catch (NullPointerException e) {
+								System.out.println(RED + "Se ha producido un error: " + e.getMessage());
+								System.out.println("¿Quieres intentarlo de nuevo? (s/n)" + RESET);
+								String respuesta3 = sc.next();
+								if (!respuesta3.equalsIgnoreCase("s")) {
+									seleccionValida3 = true;
+								}
+							}
 						}
 						break;
 
 					case 4:
-						System.out.println(
-								"Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
-										+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
-										+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
+						System.out.println(CYAN
+								+ "Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
+								+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
+								+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
 						System.out.println("¡Comienza el combate!");
 						System.out.println("");
 						System.out.println("Este combate no será aleatorio");
-						System.out.println("Elige un Alumno por POSICIÓN");
-						System.out.println("Si no te acuerdas, vuelve y mira la lista");
+						System.out.println("Elige un Alumno por " + RESET + PURPLE + "POSICIÓN" + RESET);
+						System.out.println(CYAN+"Si no te acuerdas, "+RESET+PURPLE+" vuelve y mira la lista" + RESET);
 						try {
 							int posAlumno = sc.nextInt();
 							if (posAlumno < 0 || posAlumno >= alumnosDisponibles.length) {
 								throw new ArrayIndexOutOfBoundsException("Posición de alumno inválida.");
 							}
-							System.out.println("Elige un Profesor por POSICIÓN");
-							System.out.println("Si no te acuerdas, vuelve y mira la lista");
+							System.out.println(CYAN+"Elige un Profesor por "+RESET+PURPLE+"POSICIÓN"+RESET);
+							System.out.println(CYAN+"Si no te acuerdas, vuelve y mira la lista"+RESET);
 							int posProfesor = sc.nextInt();
 							if (posProfesor < 0 || posProfesor >= profesoresDisponibles.length) {
 								throw new ArrayIndexOutOfBoundsException("Posición de profesor inválida.");
@@ -184,66 +323,66 @@ public class Juego {
 						break;
 
 					case 5:
-						System.out.println("Volviendo al menú principal");
+						System.out.println(CYAN+"Volviendo al menú principal");
 						break;
 
 					default:
-						System.out.println("¡Vaya, parece que se ha equivocado..! Otra vez.");
+						System.out.println("¡Vaya, parece que se ha equivocado..! Otra vez."+RESET);
 						break;
 					}
 				} while (opSubMenu != 5);
 				break;
 			case 2:
-				System.out.println("-------------------------------------------------------");
-				System.out.println("PERSONAJES DISPONIBLES");
-				System.out.println("-------------------------------------------------------");
+				System.out.println(BLUE+"-------------------------------------------------------"+RESET);
+				System.out.println(CYAN+"PERSONAJES DISPONIBLES"+RESET);
+				System.out.println(BLUE+"-------------------------------------------------------"+RESET);
 				mostrarAlumnosDisponibles((Alumno[]) alumnosDisponibles);
 				mostrarProfesoresDisponibles((Profesor[]) profesoresDisponibles);
 				mostrarPadresDisponibles((Padre[]) padresDisponibles);
 				break;
 			case 3:
 				do {
-					System.out.println("--------------------------------------------------------------");
-					System.out.println("------------------------------MENU----------------------------");
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
+					System.out.println(CYAN+"------------------------------MENU----------------------------");
 					System.out.println("1. Modificar Alumno");
 					System.out.println("2. Modificar Profesor");
 					System.out.println("3. Modificar Padre");
-					System.out.println("4. Ir a la sección de ELIMINAR");
-					System.out.println("--------------------------------------------------------------");
+					System.out.println("4. Ir a la sección de ELIMINAR"+RESET);
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
 					opSubMenuModificar = sc.nextInt();
 
 					switch (opSubMenuModificar) {
 					case 1:
-						System.out.println("SELECCIONÓ ALUMNO");
-						System.out.println("Diga el nombre del alumno/a que desea modificar");
+						System.out.println(BLUE+"SELECCIONÓ ALUMNO"+RESET);
+						System.out.println(CYAN+"Diga el nombre del alumno/a que desea modificar");
 						String nombreLeerA = sc.next();
 						System.out.println("Diga el nuevo valor de vida (HP)");
 						int vidaLeerA = sc.nextInt();
 						System.out.println("Diga el nuevo valor de defensa (DFE)");
 						int defensaLeerA = sc.nextInt();
-						System.out.println("Diga el nuevo valor de ataque (ATK)");
+						System.out.println("Diga el nuevo valor de ataque (ATK)"+RESET);
 						int ataqueLeerA = sc.nextInt();
 						modificarAlumno((Alumno[]) alumnosDisponibles, nombreLeerA, vidaLeerA, defensaLeerA,
 								ataqueLeerA);
 						break;
 
 					case 2:
-						System.out.println("SELECCIONÓ PROFESOR");
-						System.out.println("Diga el nombre del profesor/a que desea modificar");
+						System.out.println(BLUE+"SELECCIONÓ PROFESOR"+RESET);
+						System.out.println(CYAN+"Diga el nombre del profesor/a que desea modificar");
 						String nombreLeerPr = sc.next();
 						System.out.println("Diga el nuevo valor de vida (HP)");
 						int vidaLeerPr = sc.nextInt();
 						System.out.println("Diga el nuevo valor de defensa (DFE)");
 						int defensaLeerPr = sc.nextInt();
-						System.out.println("Diga el nuevo valor de ataque (ATK)");
+						System.out.println("Diga el nuevo valor de ataque (ATK)"+RESET);
 						int ataqueLeerPr = sc.nextInt();
 						modificarProfesor((Profesor[]) profesoresDisponibles, nombreLeerPr, vidaLeerPr, defensaLeerPr,
 								ataqueLeerPr);
 						break;
 
 					case 3:
-						System.out.println("SELECCIONÓ PADRE");
-						System.out.println("Diga el nombre del padre/madre que desea modificar");
+						System.out.println(BLUE+"SELECCIONÓ PADRE"+RESET);
+						System.out.println(CYAN+"Diga el nombre del padre/madre que desea modificar");
 						String nombreLeerPa = sc.next();
 						System.out.println("Diga el nuevo valor de vida (HP)");
 						int vidaLeerPa = sc.nextInt();
@@ -260,40 +399,40 @@ public class Juego {
 						break;
 
 					default:
-						System.out.println("Te has equivocado de opción");
+						System.out.println("Te has equivocado de opción"+RESET);
 						break;
 					}
 				} while (opSubMenuModificar != 4);
 				opPrincipal = 0;
 			case 4:
 				do {
-					System.out.println("--------------------------------------------------------------");
-					System.out.println("------------------------------MENU----------------------------");
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
+					System.out.println(CYAN+"------------------------------MENU----------------------------");
 					System.out.println("1. Eliminar Alumno");
 					System.out.println("2. Eliminar Profesor");
 					System.out.println("3. Eliminar Padre");
-					System.out.println("4. Ir a la sección AGREGAR");
-					System.out.println("--------------------------------------------------------------");
+					System.out.println("4. Ir a la sección AGREGAR"+RESET);
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
 					opSubMenuEliminar = sc.nextInt();
 
 					switch (opSubMenuEliminar) {
 					case 1:
-						System.out.println("SELECCIONÓ ALUMNO");
-						System.out.println("Diga el nombre del alumno/a que desea eliminar");
+						System.out.println(BLUE+"SELECCIONÓ ALUMNO"+RESET);
+						System.out.println(CYAN+"Diga el nombre del alumno/a que desea eliminar"+RESET);
 						String eliminarLeerA = sc.next();
 						eliminarAlumnoPorNombre((Alumno[]) alumnosDisponibles, eliminarLeerA);
 						break;
 
 					case 2:
-						System.out.println("SELECCIONÓ PROFESOR");
-						System.out.println("Diga el nombre del profesor/a que desea eliminar");
+						System.out.println(BLUE+"SELECCIONÓ PROFESOR"+RESET);
+						System.out.println(CYAN+"Diga el nombre del profesor/a que desea eliminar"+RESET);
 						String eliminarLeerPr = sc.next();
 						eliminarProfesorPorNombre((Profesor[]) profesoresDisponibles, eliminarLeerPr);
 						break;
 
 					case 3:
-						System.out.println("SELECCIONÓ PADRE");
-						System.out.println("Diga el nombre del padre/madre que desea eliminar");
+						System.out.println(BLUE+"SELECCIONÓ PADRE"+RESET);
+						System.out.println(CYAN+"Diga el nombre del padre/madre que desea eliminar");
 						String eliminarLeerPa = sc.next();
 						eliminarPadrePorNombre((Padre[]) padresDisponibles, eliminarLeerPa);
 						break;
@@ -303,7 +442,7 @@ public class Juego {
 						break;
 
 					default:
-						System.out.println("Te has equivocado de opción");
+						System.out.println("Te has equivocado de opción"+RESET);
 						break;
 					}
 				} while (opSubMenuEliminar != 4);
@@ -311,25 +450,25 @@ public class Juego {
 
 			case 5:
 				do {
-					System.out.println("--------------------------------------------------------------");
-					System.out.println("------------------------------MENU----------------------------");
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
+					System.out.println(CYAN+"------------------------------MENU----------------------------");
 					System.out.println("1. Agregar Alumno");
 					System.out.println("2. Agregar Profesor");
 					System.out.println("3. Agregar Padre");
-					System.out.println("4. Volver al menú principal");
-					System.out.println("--------------------------------------------------------------");
+					System.out.println("4. Volver al menú principal"+RESET);
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
 					opSubMenuAgregar = sc.nextInt();
 
 					switch (opSubMenuAgregar) {
 					case 1:
-						System.out.println("SELECCIONÓ ALUMNO");
-						System.out.println("Diga el nombre del alumno/a que desea agregar");
+						System.out.println(BLUE+"SELECCIONÓ ALUMNO"+RESET);
+						System.out.println(CYAN+"Diga el nombre del alumno/a que desea agregar");
 						String agregarNombreA = sc.next();
 						System.out.println("Seleccione una vida para el alumno (Entre 90 y 120 aprox)");
 						int agregarVidaA = sc.nextInt();
 						System.out.println("Seleccione una defensa para el alumno (Entre 10 y 25 aprox)");
 						int agregarDefensaA = sc.nextInt();
-						System.out.println("Seleccione un ataque para el alumno (Entre 15 y 35 aprox)");
+						System.out.println("Seleccione un ataque para el alumno (Entre 15 y 35 aprox)"+RESET);
 						int agregarAtaqueA = sc.nextInt();
 
 						agregarAlumno((Alumno[]) alumnosDisponibles, agregarNombreA, agregarVidaA, agregarDefensaA,
@@ -337,14 +476,14 @@ public class Juego {
 						break;
 
 					case 2:
-						System.out.println("SELECCIONÓ PROFESOR");
-						System.out.println("Diga el nombre del profesor/a que desea agregar");
+						System.out.println(BLUE+"SELECCIONÓ PROFESOR"+RESET);
+						System.out.println(CYAN+"Diga el nombre del profesor/a que desea agregar");
 						String agregarNombrePr = sc.next();
 						System.out.println("Seleccione una vida para el profesor (Entre 90 y 120 aprox)");
 						int agregarVidaPr = sc.nextInt();
 						System.out.println("Seleccione una defensa para el profesor (Entre 10 y 25 aprox)");
 						int agregarDefensaPr = sc.nextInt();
-						System.out.println("Seleccione un ataque para el profesor (Entre 15 y 35 aprox)");
+						System.out.println("Seleccione un ataque para el profesor (Entre 15 y 35 aprox)"+CYAN);
 						int agregarAtaquePr = sc.nextInt();
 
 						agregarProfesor((Profesor[]) profesoresDisponibles, agregarNombrePr, agregarVidaPr,
@@ -352,8 +491,8 @@ public class Juego {
 						break;
 
 					case 3:
-						System.out.println("SELECCIONÓ PADRE");
-						System.out.println("Diga el nombre del padre/madre que desea agregar");
+						System.out.println(BLUE+"SELECCIONÓ PADRE"+RESET);
+						System.out.println(CYAN+"Diga el nombre del padre/madre que desea agregar");
 						String agregarNombrePa = sc.next();
 						System.out.println("Seleccione una vida para el alumno (Entre 90 y 120 aprox)");
 						int agregarVidaPa = sc.nextInt();
@@ -371,7 +510,7 @@ public class Juego {
 						break;
 
 					default:
-						System.out.println("Te has equivocado de opción");
+						System.out.println("Te has equivocado de opción"+RESET);
 						break;
 					}
 				} while (opSubMenuAgregar != 4);
@@ -380,21 +519,21 @@ public class Juego {
 				break;
 			case 6:
 				do {
-					System.out.println("--------------------------------------------------------------");
-					System.out.println("------------------------------MENU----------------------------");
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
+					System.out.println(CYAN+"------------------------------MENU----------------------------");
 					System.out.println("¿ESTAS SEGURO DE QUE DESEAS SALIR?");
 					System.out.println("1. Si.");
-					System.out.println("2. NOOOO JODER, ESTABA PROBANDO EL PROGRAMA.");
-					System.out.println("--------------------------------------------------------------");
+					System.out.println("2. NOOOO JODER, ESTABA PROBANDO EL PROGRAMA."+RESET);
+					System.out.println(BLUE+"--------------------------------------------------------------"+RESET);
 					opSubMenuSalida = sc.nextInt();
 
 					switch (opSubMenuSalida) {
 					case 1:
-						System.out.println("Saliendo del juego... (Sleep 3)");
+						System.out.println(CYAN+"Saliendo del juego... (Sleep 3)"+RESET);
 						break;
 
 					case 2:
-						System.out.println("Sabíamos que estaba de broma, volviendo al menú principal");
+						System.out.println(CYAN+"Sabíamos que estaba de broma, volviendo al menú principal"+RESET);
 
 						break;
 					}
@@ -404,7 +543,7 @@ public class Juego {
 
 			default:
 				System.out.println("Vaya! Espero que " + "estes probando el programa y "
-						+ "no que te hayas equivocado, jaja " + "seguro que es eso no...");
+						+ "no que te hayas equivocado, jaja " + "seguro que es eso no..."+RESET);
 				break;
 			}
 
@@ -445,14 +584,14 @@ public class Juego {
 			// Turno del jugador 1
 			jugador1.atacar(jugador2);
 			if (jugador2.getVida() <= 0) {
-				System.out.println(jugador1.getNombre() + " ha ganado la partida.");
+				System.out.println(jugador1.getNombre() + YELLOW +" ha ganado la partida."+RESET);
 				return; // Terminar el juego si el jugador 2 ha perdido
 			}
 
 			// Turno del jugador 2
 			jugador2.atacar(jugador1);
 			if (jugador1.getVida() <= 0) {
-				System.out.println(jugador2.getNombre() + " ha ganado la partida.");
+				System.out.println(jugador2.getNombre() + YELLOW +" ha ganado la partida."+RESET);
 				return; // Terminar el juego si el jugador 1 ha perdido
 			}
 
@@ -472,7 +611,7 @@ public class Juego {
 
 		System.out.print(jugador.getNombre() + ": ");
 		for (int i = 0; i < porcentajeVida; i++) {
-			System.out.print("/");
+			System.out.print(""+WHITE+"/"+RESET);
 		}
 		System.out.println(" " + porcentajeVida + "%");
 	}
