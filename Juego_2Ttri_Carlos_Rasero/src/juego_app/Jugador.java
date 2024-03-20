@@ -57,8 +57,13 @@ public abstract class Jugador {
 		this.ataque = ataque;
 	}
 
-	//Método para atacar
+	/**
+	 * Realiza un ataque al oponente.
+	 * 
+	 * @param oponente El jugador al que se va a atacar.
+	 */
 	public abstract void atacar(Jugador oponente);
+
 	
 	
 	//Método para inicializar habilidades
