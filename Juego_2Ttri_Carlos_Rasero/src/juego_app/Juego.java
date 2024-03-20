@@ -19,7 +19,6 @@ public class Juego {
 		int opSubMenuAgregar = 0;
 		int opSubMenuSalida = 0;
 		Scanner sc = new Scanner(System.in);
-		Combate combate1 = new Combate(alumnosDisponibles[0], profesoresDisponibles[3]);
 
 		// Profesores ya predefinidos
 
@@ -87,25 +86,74 @@ public class Juego {
 
 					switch (opSubMenu) {
 					case 1:
-						System.out.println(
-								"Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
-										+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
-										+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
-						combate1.iniciarCombate();
-						break;
+					    System.out.println("Esto es un combate aleatorio entre un alumno y un profesor");
+					    System.out.println("¡Comienza el combate!");
+					    System.out.println("");
+
+					    boolean seleccionValida = false;
+					    while (!seleccionValida) {
+					        try {
+					            // Escoge un profesor al azar
+					            Random rand = new Random();
+					            Profesor profesorAleatorio = (Profesor) profesoresDisponibles[rand.nextInt(profesoresDisponibles.length)];
+					            // Escoge un alumno al azar
+					            Alumno alumnoAleatorio = (Alumno) alumnosDisponibles[rand.nextInt(alumnosDisponibles.length)];
+					            
+					            // Verifica si los elementos seleccionados son nulos
+					            if (profesorAleatorio != null && alumnoAleatorio != null) {
+					                // Inicia el combate
+					                jugarCombate(profesorAleatorio, alumnoAleatorio);
+					                seleccionValida = true;
+					            } else {
+					                throw new NullPointerException("Se ha seleccionado un profesor o un alumno nulo.");
+					            }
+					        } catch (NullPointerException e) {
+					            System.out.println("Se ha producido un error: " + e.getMessage());
+					            System.out.println("¿Quieres intentarlo de nuevo? (s/n)");
+					            String respuesta = sc.next();
+					            if (!respuesta.equalsIgnoreCase("s")) {
+					                seleccionValida = true;
+					            }
+					        }
+					    }
+					    break;
 
 					case 2:
 						System.out.println(
 								"Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
 										+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
 										+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
+						System.out.println("");
+						System.out.println("Esto es un combate aleatorio entre un padre y un alumno");
+
+						System.out.println("¡Comienza el combate!");
+						System.out.println("");
+						// Escoge un profesor al azar
+						Random rand2 = new Random();
+						Padre padreAleatorio2 = (Padre) padresDisponibles[rand2.nextInt(padresDisponibles.length)];
+						// Escoge un alumno al azar
+						Alumno alumnoAleatorio2 = (Alumno) alumnosDisponibles[rand2.nextInt(alumnosDisponibles.length)];
+						// Inicia el combate
+						jugarCombate(padreAleatorio2, alumnoAleatorio2);
 						break;
 
 					case 3:
-						System.out.println(
-								"Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
-										+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
-										+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
+						System.out.println("Esto es un combate aleatorio entre un profesor y un padre");
+						System.out.println("¡Comienza el combate!");
+						System.out.println("");
+
+						// Escoge un profesor al azar
+						Random rand3 = new Random();
+						try {
+							Padre padreAleatorio3 = (Padre) padresDisponibles[rand3.nextInt(padresDisponibles.length)];
+							// Escoge un alumno al azar
+							Profesor profesorAleatorio3 = (Profesor) profesoresDisponibles[rand3
+									.nextInt(profesoresDisponibles.length)];
+							// Inicia el combate
+							jugarCombate(padreAleatorio3, profesorAleatorio3);
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("Error: " + e.getMessage());
+						}
 						break;
 
 					case 4:
@@ -113,6 +161,26 @@ public class Juego {
 								"Lo sentimos pero actualmente no tenemos la función de dificultad disponible, próximamente "
 										+ "los desarrolladores lanzarán una nueva actualización con LootBoxes y microtransacciones, "
 										+ "muchas gracias por entendernos. STUDIOS JAVALAND SL");
+						System.out.println("¡Comienza el combate!");
+						System.out.println("");
+						System.out.println("Este combate no será aleatorio");
+						System.out.println("Elige un Alumno por POSICIÓN");
+						System.out.println("Si no te acuerdas, vuelve y mira la lista");
+						try {
+							int posAlumno = sc.nextInt();
+							if (posAlumno < 0 || posAlumno >= alumnosDisponibles.length) {
+								throw new ArrayIndexOutOfBoundsException("Posición de alumno inválida.");
+							}
+							System.out.println("Elige un Profesor por POSICIÓN");
+							System.out.println("Si no te acuerdas, vuelve y mira la lista");
+							int posProfesor = sc.nextInt();
+							if (posProfesor < 0 || posProfesor >= profesoresDisponibles.length) {
+								throw new ArrayIndexOutOfBoundsException("Posición de profesor inválida.");
+							}
+							jugarCombate(profesoresDisponibles[posProfesor], alumnosDisponibles[posAlumno]);
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("Error: " + e.getMessage());
+						}
 						break;
 
 					case 5:
@@ -140,7 +208,7 @@ public class Juego {
 					System.out.println("1. Modificar Alumno");
 					System.out.println("2. Modificar Profesor");
 					System.out.println("3. Modificar Padre");
-					System.out.println("4. Volver al menú principal");
+					System.out.println("4. Ir a la sección de ELIMINAR");
 					System.out.println("--------------------------------------------------------------");
 					opSubMenuModificar = sc.nextInt();
 
@@ -185,7 +253,6 @@ public class Juego {
 						int ataqueLeerPa = sc.nextInt();
 						modificarPadre((Padre[]) padresDisponibles, nombreLeerPa, vidaLeerPa, defensaLeerPa,
 								ataqueLeerPa);
-						System.out.println("SELECCIONÓ PADRE");
 						break;
 
 					case 4:
@@ -205,7 +272,7 @@ public class Juego {
 					System.out.println("1. Eliminar Alumno");
 					System.out.println("2. Eliminar Profesor");
 					System.out.println("3. Eliminar Padre");
-					System.out.println("4. Volver al menú principal");
+					System.out.println("4. Ir a la sección AGREGAR");
 					System.out.println("--------------------------------------------------------------");
 					opSubMenuEliminar = sc.nextInt();
 
@@ -213,16 +280,22 @@ public class Juego {
 					case 1:
 						System.out.println("SELECCIONÓ ALUMNO");
 						System.out.println("Diga el nombre del alumno/a que desea eliminar");
+						String eliminarLeerA = sc.next();
+						eliminarAlumnoPorNombre((Alumno[]) alumnosDisponibles, eliminarLeerA);
 						break;
 
 					case 2:
 						System.out.println("SELECCIONÓ PROFESOR");
 						System.out.println("Diga el nombre del profesor/a que desea eliminar");
+						String eliminarLeerPr = sc.next();
+						eliminarProfesorPorNombre((Profesor[]) profesoresDisponibles, eliminarLeerPr);
 						break;
 
 					case 3:
 						System.out.println("SELECCIONÓ PADRE");
 						System.out.println("Diga el nombre del padre/madre que desea eliminar");
+						String eliminarLeerPa = sc.next();
+						eliminarPadrePorNombre((Padre[]) padresDisponibles, eliminarLeerPa);
 						break;
 
 					case 4:
@@ -251,16 +324,46 @@ public class Juego {
 					case 1:
 						System.out.println("SELECCIONÓ ALUMNO");
 						System.out.println("Diga el nombre del alumno/a que desea agregar");
+						String agregarNombreA = sc.next();
+						System.out.println("Seleccione una vida para el alumno (Entre 90 y 120 aprox)");
+						int agregarVidaA = sc.nextInt();
+						System.out.println("Seleccione una defensa para el alumno (Entre 10 y 25 aprox)");
+						int agregarDefensaA = sc.nextInt();
+						System.out.println("Seleccione un ataque para el alumno (Entre 15 y 35 aprox)");
+						int agregarAtaqueA = sc.nextInt();
+
+						agregarAlumno((Alumno[]) alumnosDisponibles, agregarNombreA, agregarVidaA, agregarDefensaA,
+								agregarAtaqueA);
 						break;
 
 					case 2:
 						System.out.println("SELECCIONÓ PROFESOR");
 						System.out.println("Diga el nombre del profesor/a que desea agregar");
+						String agregarNombrePr = sc.next();
+						System.out.println("Seleccione una vida para el profesor (Entre 90 y 120 aprox)");
+						int agregarVidaPr = sc.nextInt();
+						System.out.println("Seleccione una defensa para el profesor (Entre 10 y 25 aprox)");
+						int agregarDefensaPr = sc.nextInt();
+						System.out.println("Seleccione un ataque para el profesor (Entre 15 y 35 aprox)");
+						int agregarAtaquePr = sc.nextInt();
+
+						agregarProfesor((Profesor[]) profesoresDisponibles, agregarNombrePr, agregarVidaPr,
+								agregarDefensaPr, agregarAtaquePr);
 						break;
 
 					case 3:
 						System.out.println("SELECCIONÓ PADRE");
 						System.out.println("Diga el nombre del padre/madre que desea agregar");
+						String agregarNombrePa = sc.next();
+						System.out.println("Seleccione una vida para el alumno (Entre 90 y 120 aprox)");
+						int agregarVidaPa = sc.nextInt();
+						System.out.println("Seleccione una defensa para el alumno (Entre 10 y 25 aprox)");
+						int agregarDefensaPa = sc.nextInt();
+						System.out.println("Seleccione un ataque para el alumno (Entre 15 y 35 aprox)");
+						int agregarAtaquePa = sc.nextInt();
+
+						agregarPadre((Padre[]) padresDisponibles, agregarNombrePa, agregarVidaPa, agregarDefensaPa,
+								agregarAtaquePa);
 						break;
 
 					case 4:
@@ -336,6 +439,44 @@ public class Juego {
 
 	}
 
+	public static void jugarCombate(Jugador jugador1, Jugador jugador2) {
+		// Bucle para simular turnos hasta que uno de los jugadores muera
+		while (jugador1.getVida() > 0 && jugador2.getVida() > 0) {
+			// Turno del jugador 1
+			jugador1.atacar(jugador2);
+			if (jugador2.getVida() <= 0) {
+				System.out.println(jugador1.getNombre() + " ha ganado la partida.");
+				return; // Terminar el juego si el jugador 2 ha perdido
+			}
+
+			// Turno del jugador 2
+			jugador2.atacar(jugador1);
+			if (jugador1.getVida() <= 0) {
+				System.out.println(jugador2.getNombre() + " ha ganado la partida.");
+				return; // Terminar el juego si el jugador 1 ha perdido
+			}
+
+			// Mostrar estado final de los jugadores con barra de vida
+			System.out.println("\nEstado final de los jugadores:");
+			mostrarBarraVida(jugador1);
+			System.out.println();
+			mostrarBarraVida(jugador2);
+		}
+
+	}
+
+	public static void mostrarBarraVida(Jugador jugador) {
+		int vidaActual = jugador.getVida();
+		int vidaTotal = 50; // Supongamos que la vida total es 100
+		int porcentajeVida = vidaActual * 50 / vidaTotal;
+
+		System.out.print(jugador.getNombre() + ": ");
+		for (int i = 0; i < porcentajeVida; i++) {
+			System.out.print("/");
+		}
+		System.out.println(" " + porcentajeVida + "%");
+	}
+
 	////////////////////////////
 	////////////////////////////////////
 /////////////////////////////////////////////
@@ -367,6 +508,20 @@ public class Juego {
 		}
 	}
 
+	// Método estático para agregar un nuevo profesor al array
+	public static void agregarProfesor(Profesor[] profesoresDisponibles, String nombre, int vida, int defensa,
+			int ataque) {
+		for (int i = 0; i < profesoresDisponibles.length; i++) {
+			if (profesoresDisponibles[i] == null) {
+				profesoresDisponibles[i] = new Profesor(nombre, vida, defensa, ataque); // Crear un nuevo alumno en la
+				// primera posición disponible
+				System.out.println("Profesor " + nombre + " agregado correctamente.");
+				return;
+			}
+		}
+		System.out.println("No se pudo agregar al profesor " + nombre + ". El array de alumnos está lleno.");
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Método estático para modificar un alumno dado su nombre
 	public static void modificarProfesor(Profesor[] profesoresDisponibles, String nombre, int nuevaVida,
@@ -381,6 +536,18 @@ public class Juego {
 			System.out.println(
 					"No se ha encontrado ningún profesor con el nombre proporcionado o no hay posición disponible en el array.");
 		}
+	}
+
+	// Método estático para eliminar un profesor del array por nombre
+	public static void eliminarProfesorPorNombre(Profesor[] profesoresDisponibles, String nombre) {
+		for (int i = 0; i < profesoresDisponibles.length; i++) {
+			if (profesoresDisponibles[i] != null && profesoresDisponibles[i].getNombre().equals(nombre)) {
+				profesoresDisponibles[i] = null; // Eliminar el alumno estableciendo su referencia a null
+				System.out.println("Profesor " + nombre + " eliminado correctamente.");
+				return;
+			}
+		}
+		System.out.println("No se encontró ningún profesor con el nombre " + nombre);
 	}
 
 	// Método auxiliar para buscar un alumno dado su nombre y devolver su posición
@@ -426,6 +593,19 @@ public class Juego {
 		}
 	}
 
+	// Método estático para agregar un nuevo alumno al array
+	public static void agregarAlumno(Alumno[] alumnosDisponibles, String nombre, int vida, int defensa, int ataque) {
+		for (int i = 0; i < alumnosDisponibles.length; i++) {
+			if (alumnosDisponibles[i] == null) {
+				alumnosDisponibles[i] = new Alumno(nombre, vida, defensa, ataque); // Crear un nuevo alumno en la
+																					// primera posición disponible
+				System.out.println("Alumno " + nombre + " agregado correctamente.");
+				return;
+			}
+		}
+		System.out.println("No se pudo agregar al alumno " + nombre + ". El array de alumnos está lleno.");
+	}
+
 	// Método estático para modificar un alumno dado su nombre
 	public static void modificarAlumno(Alumno[] alumnos, String nombre, int nuevaVida, int nuevaDefensa,
 			int nuevoAtaque) {
@@ -439,6 +619,18 @@ public class Juego {
 			System.out.println(
 					"No se ha encontrado ningún alumno con el nombre proporcionado o no hay posición disponible en el array.");
 		}
+	}
+
+	// Método estático para eliminar un alumno del array por nombre
+	public static void eliminarAlumnoPorNombre(Alumno[] alumnosDisponibles, String nombre) {
+		for (int i = 0; i < alumnosDisponibles.length; i++) {
+			if (alumnosDisponibles[i] != null && alumnosDisponibles[i].getNombre().equals(nombre)) {
+				alumnosDisponibles[i] = null; // Eliminar el alumno estableciendo su referencia a null
+				System.out.println("Alumno " + nombre + " eliminado correctamente.");
+				return;
+			}
+		}
+		System.out.println("No se encontró ningún alumno con el nombre " + nombre);
 	}
 
 	// Método auxiliar para buscar un alumno dado su nombre y devolver su posición
@@ -484,6 +676,19 @@ public class Juego {
 		}
 	}
 
+	// Método estático para agregar un nuevo padre al array
+	public static void agregarPadre(Padre[] padresDisponibles, String nombre, int vida, int defensa, int ataque) {
+		for (int i = 0; i < padresDisponibles.length; i++) {
+			if (padresDisponibles[i] == null) {
+				padresDisponibles[i] = new Padre(nombre, vida, defensa, ataque); // Crear un nuevo alumno en la
+																					// primera posición disponible
+				System.out.println("Padre/Madre " + nombre + " agregado correctamente.");
+				return;
+			}
+		}
+		System.out.println("No se pudo agregar al alumno " + nombre + ". El array de alumnos está lleno.");
+	}
+
 	// Método estático para modificar un alumno dado su nombre
 	public static void modificarPadre(Padre[] padresDisponibles, String nombre, int nuevaVida, int nuevaDefensa,
 			int nuevoAtaque) {
@@ -497,6 +702,18 @@ public class Juego {
 			System.out.println(
 					"No se ha encontrado ningún padre/madre con el nombre proporcionado o no hay posición disponible en el array.");
 		}
+	}
+
+	// Método estático para eliminar un padre del array por nombre
+	public static void eliminarPadrePorNombre(Padre[] padresDisponibles, String nombre) {
+		for (int i = 0; i < padresDisponibles.length; i++) {
+			if (padresDisponibles[i] != null && padresDisponibles[i].getNombre().equals(nombre)) {
+				padresDisponibles[i] = null; // Eliminar el alumno estableciendo su referencia a null
+				System.out.println("Padre/Madre " + nombre + " eliminado correctamente.");
+				return;
+			}
+		}
+		System.out.println("No se encontró ningún profesor con el nombre " + nombre);
 	}
 
 	// Método auxiliar para buscar un alumno dado su nombre y devolver su posición
